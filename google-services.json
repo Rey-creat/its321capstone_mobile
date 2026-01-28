@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "765683612077",
+    "project_id": "its411rey",
+    "storage_bucket": "its411rey.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765683612077:android:efb7f465c623136206c924",
+        "android_client_info": {
+          "package_name": "com.anonymous.myapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDadBi2TrL0TB_ZXGCQh9cyrqx_ckchHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:765683612077:android:fb8f9a40a9dc4d0106c924",
+        "android_client_info": {
+          "package_name": "com.its411.android"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDadBi2TrL0TB_ZXGCQh9cyrqx_ckchHek"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
