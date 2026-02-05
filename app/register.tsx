@@ -1,8 +1,9 @@
-// app/index.tsx
+// app/register.tsx
 import auth from '@react-native-firebase/auth';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import {
+  ActivityIndicator,
   Alert,
   KeyboardAvoidingView,
   Platform,
@@ -13,21 +14,35 @@ import {
   View
 } from 'react-native';
 
-export default function Index() {
+export default function Register() {
   const router = useRouter();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [loading, setLoading] = useState(false);
 
-  async function handleLogin() {
-    if (!email || !password) {
-      Alert.alert('Please enter email and password');
+  const validateEmail = (e: string) => {
+    const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    return re.test(e);
+  };
+
+  async function handleRegister() {
+    if (!validateEmail(email)) {
+      Alert.alert('Invalid email');
       return;
     }
+    if (password.length < 6) {
+      Alert.alert('Password should be at least 6 characters');
+      return;
+    }
+    setLoading(true);
     try {
-      await auth().signInWithEmailAndPassword(email.trim(), password);
-      router.replace('/menu');
+      await auth().createUserWithEmailAndPassword(email.trim(), password);
+      Alert.alert('Account created', 'You can now log in.');
+      router.replace('/');
     } catch (error: any) {
-      Alert.alert('Login failed', error.message || String(error));
+      Alert.alert('Registration failed', error.message || String(error));
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -37,13 +52,13 @@ export default function Index() {
       behavior={Platform.OS === 'ios' ? 'padding' : undefined}
     >
       <View style={styles.content}>
-        <Text style={styles.title}>Welcome back!</Text>
+        <Text style={styles.title}>Let&apos;s Get Started!</Text>
 
         <View style={styles.inputContainer}>
-          <Text style={styles.inputIcon}>👤</Text>
+          <Text style={styles.inputIcon}>✉️</Text>
           <TextInput
             style={styles.input}
-            placeholder="Username"
+            placeholder="Email"
             placeholderTextColor="#999"
             keyboardType="email-address"
             autoCapitalize="none"
@@ -64,20 +79,14 @@ export default function Index() {
           />
         </View>
 
-        <TouchableOpacity style={styles.forgotPassword}>
-          <Text style={styles.forgotPasswordText}>Forgot Password?</Text>
+        <TouchableOpacity style={styles.button} onPress={handleRegister} disabled={loading}>
+          {loading ? <ActivityIndicator color="#fff" /> : <Text style={styles.buttonText}>CREATE</Text>}
         </TouchableOpacity>
-
-        <TouchableOpacity style={styles.button} onPress={handleLogin}>
-          <Text style={styles.buttonText}>LOG IN</Text>
-        </TouchableOpacity>
-
-        <Text style={styles.orText}>Or sign up using</Text>
 
         <View style={styles.footer}>
-          <Text style={styles.footerText}>Dont have an account? </Text>
-          <TouchableOpacity onPress={() => router.push('/register')}>
-            <Text style={styles.signUpLink}>Sign Up</Text>
+          <Text style={styles.footerText}>Already have an account? </Text>
+          <TouchableOpacity onPress={() => router.replace('/')}>
+            <Text style={styles.loginLink}>Login here</Text>
           </TouchableOpacity>
         </View>
       </View>
@@ -124,18 +133,11 @@ const styles = StyleSheet.create({
     color: '#333',
     height: '100%',
   },
-  forgotPassword: {
-    alignSelf: 'flex-end',
-    marginBottom: 20,
-  },
-  forgotPasswordText: {
-    fontSize: 14,
-    color: '#000',
-  },
   button: {
     backgroundColor: '#6b9fad',
     padding: 16,
     borderRadius: 8,
+    marginTop: 10,
     marginBottom: 20,
     alignItems: 'center',
     height: 55,
@@ -147,12 +149,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
     letterSpacing: 1,
   },
-  orText: {
-    textAlign: 'center',
-    fontSize: 14,
-    color: '#666',
-    marginBottom: 20,
-  },
   footer: {
     flexDirection: 'row',
     justifyContent: 'center',
@@ -162,7 +158,7 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: '#666',
   },
-  signUpLink: {
+  loginLink: {
     fontSize: 14,
     color: '#000',
     fontWeight: '600',
