@@ -433,7 +433,7 @@ export default function Menu() {
                     </View>
 
                     <Text style={styles.postContent}>
-                      "{thought.description}" {thought.epiphany && '⭐'}
+                      {thought.description} {thought.epiphany && '⭐'}
                     </Text>
                     
                     <Text style={styles.postTime}>
@@ -638,7 +638,7 @@ export default function Menu() {
               <View style={styles.aboutSection}>
                 <Text style={styles.aboutSectionTitle}>Description:</Text>
                 <Text style={styles.aboutText}>
-                  Tikalon Notes is a simple mobile app where you can freely write, share, and reflect on your random thoughts ✨. Whether it's a deep idea, a funny memory, or just something you want to remember, this app is your personal space for capturing moments and feelings.
+                  Tikalon Notes is a simple mobile app where you can freely write, share, and reflect on your random thoughts ✨. Whether its a deep idea, a funny memory, or just something you want to remember, this app is your personal space for capturing moments and feelings.
                 </Text>
               </View>
 
