@@ -117,7 +117,7 @@ const styles = StyleSheet.create({
   inputContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    backgroundColor: '#f5f5f5',
+    backgroundColor: '#f0f0f0',
     borderRadius: 8,
     marginBottom: 15,
     paddingHorizontal: 15,
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   button: {
-    backgroundColor: '#6b9fad',
+    backgroundColor: '#0466c8',
     padding: 16,
     borderRadius: 8,
     marginTop: 10,
@@ -160,7 +160,7 @@ const styles = StyleSheet.create({
   },
   loginLink: {
     fontSize: 14,
-    color: '#000',
+    color: '#0466c8',
     fontWeight: '600',
   },
 });
