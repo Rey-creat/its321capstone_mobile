@@ -72,7 +72,7 @@ export default function Index() {
           <Text style={styles.buttonText}>LOG IN</Text>
         </TouchableOpacity>
 
-        <Text style={styles.orText}>Or sign up using</Text>
+        
 
         <View style={styles.footer}>
           <Text style={styles.footerText}>Dont have an account? </Text>
@@ -133,7 +133,7 @@ const styles = StyleSheet.create({
     color: '#000',
   },
   button: {
-    backgroundColor: '#003366',
+    backgroundColor: '#0466c8',
     padding: 16,
     borderRadius: 8,
     marginBottom: 20,
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   signUpLink: {
     fontSize: 14,
-    color: '#000',
+    color: '#0466c8',
     fontWeight: '600',
   },
 });
