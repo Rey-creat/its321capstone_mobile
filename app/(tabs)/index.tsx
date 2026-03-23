@@ -400,7 +400,7 @@ const styles = StyleSheet.create({
   emptySubtitle: {
     fontSize: 16,
     fontWeight: '600',
-    color: '#0d47a1',
+    color: '#000000',
     textAlign: 'center',
     marginTop: 4,
   },
